@@ -1,38 +1,43 @@
-body{
+body {
     background: #818181;
-    color:#ffffff;
+    color: #ffffff;
     font-family: courier;
     margin: 0;
 }
 
-main{
+main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 }
 
-header{
+header {
     width: 100vw;
     height: 15vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
+
 }
 
-h1{
+h1 {
     width: 100%;
     height: 10%;
     text-align: center;
     font-size: 1.3em;
 }
 
-.startButton{
+.startButton {
     width: 10%;
 }
-.board{
+
+.startButton:hover {
+    cursor: pointer;
+}
+
+.board {
     width: 100vw;
     height: 85vh;
     padding: 0 15%;
@@ -40,35 +45,153 @@ h1{
     grid-template: repeat(5, 1fr) / repeat(6, 1fr);
     justify-items: center;
     grid-gap: 1em;
-    
+    visibility: hidden;
+
 }
 
-.tilesBack{
-    z-index: 2;
+.tiles{
+    width: 68%;
+    height:auto;
+    border: 1px solid white;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:6px;
 }
 
-.tilesClosed, .tilesOpened{
-    width:70%;
+.tiles:hover{
+    cursor: pointer;
+}
+
+.tilesClosed{
+    width: 100%;
+    height: auto;
+}
+
+.tilesOpened{
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+.found{
+    visibility: hidden;
+}
+/*
+.tiles{
+    width: 70%;
     height: auto;
     background: white;
 }
 
-.tilesClosed{
-    opacity: 0.1;
-    border:1px solid white;
+.tilesClosed {
     transform: rotateY(-180deg);
     transition: 0.6s;
+    width: 60%;
+
 }
 
-.tilesClosed:hover{
+.tilesClosed:hover {
     cursor: pointer;
-} 
-
-.tilesOpened{
-    transform:rotateY(0);
-    opacity:1;
 }
 
-.tilesFouned{
+.tilesOpened {
+    transform: rotateY(0);
     opacity: 0;
 }
+
+.tilesFound {
+    opacity: 0;
+}
+
+.img0 {
+    background-image:url(img/bart.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img1 {
+    background-image:url(img/comicbookguy.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img2 {
+    background-image:url(img/granpda.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img3 {
+    background-image:url(img/Homer.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img4 {
+    background-image:url(img/itchy.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img5 {
+    background-image:url(img/Lisa.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img6 {
+    background-image:url(img/milhouse.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img7 {
+    background-image:url(img/maggie.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img8 {
+    background-image:url(img/Marge.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img9 {
+    background-image:url(img/moe.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img10 {
+    background-image:url(img/monty.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img11 {
+    background-image:url(img/ned.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img12 {
+    background-image:url(img/santaslittlehelper.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img13 {
+    background-image:url(img/strachy.png);
+    background-position:center;
+    background-size:cover;
+}
+
+.img14 {
+    background-image:url(img/wiggum.png);
+    background-position:center;
+    background-size:cover;
+}
+*/
