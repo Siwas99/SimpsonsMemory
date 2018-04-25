@@ -17,15 +17,16 @@ $(document).ready(function () {
         "monty.png",
         "wiggum.png"
     ],
-        countOfTiles = 0,
-        tile1 = "",
-        tile2 = "",
-        shot = 1,
-        tilesClass = 0,
-        tilesFound = 0,
-        sec = 0,
+        countOfTiles = 0, //liczba odkrytych kafelków
+        tile1 = "", //nazwa 1 kafelka
+        tile2 = "", //nazwa 2 kafelka
+        shot = 1, //ilosc prób
+        tileNumber = 0, //Numer kafelka
+        tilesFound = 0, //Znalezione pary
+        sec = 0, //sekundy
         time = setInterval(function(){stoper()}, 1000);
 
+    //Odmierzanie czasu
     function stoper(){
         sec++;
     };
@@ -33,18 +34,18 @@ $(document).ready(function () {
     //Generowanie kafelków w losowej kolejności + restart gry
 
     $(".startButton").click(function () {
-        time;
+        time; //Uruchomienie stopera
         $('.tiles').empty();
         shot = 1;
         for (var x = 0; x < 30; x++) {
-            tilesClass++;
-            if (tilesClass == 15) {
-                tilesClass = 0;
+            tileNumber++;
+            if (tileNumber == 15) {
+                tileNumber = 0;
             }
             var randomNumber = Math.floor(Math.random() * 100);
 
             $('.tiles').eq(x).css('order', randomNumber);
-            $('.tiles').eq(x).append("<img class='tilesOpened' src='img/" + tilesImg[tilesClass] + "'>");
+            $('.tiles').eq(x).append("<img class='tilesOpened' src='img/" + tilesImg[tileNumber] + "'>");
             $('.tiles').eq(x).prepend("<img class='tilesClosed' src='img/logo.png'>");
 
         }
@@ -99,7 +100,7 @@ $(document).ready(function () {
 
                         //Koniec gry
                         if (tilesFound == 15) {
-                            clearInterval(time);
+                            clearInterval(time); //Zatrzymanie czasu
                             $('.board').css({
                                 display: 'none'
                             });
