@@ -43,11 +43,10 @@ h1 {
     width: 100vw;
     height: 85vh;
     padding: 0 15%;
-    display: grid;
     grid-template: repeat(5, 1fr) / repeat(6, 1fr);
     justify-items: center;
     grid-gap: 1em;
-    visibility: hidden;
+    display: none;
     font-size: 1.3em;
 }
 

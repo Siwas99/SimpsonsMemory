@@ -24,17 +24,23 @@ $(document).ready(function () {
         tileNumber = 0, //Numer kafelka
         tilesFound = 0, //Znalezione pary
         sec = 0, //sekundy
-        time = setInterval(function(){stoper()}, 1000);
-
+        time;
     //Odmierzanie czasu
-    function stoper(){
+    function stoper() {
         sec++;
     };
-    
-    //Generowanie kafelków w losowej kolejności + restart gry
 
+    //Generowanie kafelków w losowej kolejności + start/restart gry
     $(".startButton").click(function () {
-        time; //Uruchomienie stopera
+
+        //Uruchomienie stopera
+        sec = 0
+        var time = setInterval(function () {
+            stoper();
+            console.log(sec);
+        }, 1000);
+        time;
+
         $('.tiles').empty();
         shot = 1;
         for (var x = 0; x < 30; x++) {
@@ -44,13 +50,16 @@ $(document).ready(function () {
             }
             var randomNumber = Math.floor(Math.random() * 100);
 
+            $('.tiles').removeClass('found');
             $('.tiles').eq(x).css('order', randomNumber);
             $('.tiles').eq(x).append("<img class='tilesOpened' src='img/" + tilesImg[tileNumber] + "'>");
             $('.tiles').eq(x).prepend("<img class='tilesClosed' src='img/logo.png'>");
 
         }
-
-        $('.board').css('visibility', 'visible');
+        $('.bravo').css('display', 'none');
+        $('.bravo').empty();
+        $('.tiles').css('opacity', 1);
+        $('.board').css('display', 'grid');
     });
 
     //Odkrywanie i sprawdzanie kafelków 
@@ -58,7 +67,7 @@ $(document).ready(function () {
     $(".tiles").click(function () {
         //Blokowanie mozliwości kliknięcia w ten sam kafelek
         if ($(this).hasClass('chosen') == false) {
-            
+
             //Odwrócenie pierwszego kafelka
             if (countOfTiles === 0) {
                 $(this).children('.tilesOpened').toggle('display');
@@ -66,7 +75,7 @@ $(document).ready(function () {
                 $(this).addClass('chosen');
                 countOfTiles++;
                 tile1 = $(this).children('.tilesOpened').attr('src');
-                
+
                 //Odwrócenie drugiego kafelka
             } else if (countOfTiles === 1) {
                 shot++;
@@ -89,6 +98,7 @@ $(document).ready(function () {
                     //Jeśli pasują
                 } else {
                     tilesFound++;
+                    console.log(tilesFound);
                     $('.chosen').animate({
                         opacity: 0
                     }, 1100);
@@ -105,11 +115,12 @@ $(document).ready(function () {
                                 display: 'none'
                             });
                             $('.bravo').css('display', 'flex');
-                            $('.bravo').prepend("Gratulacje!<br>Udało Ci się odgadnąć wszystkie kafelki po " + shot + " próbach, w czasie "+sec+" sekund. Świetny wynik :-)");
+                            $('.bravo').prepend("Gratulacje!<br>Udało Ci się odgadnąć wszystkie kafelki po " + shot + " próbach, w czasie " + sec + " sekund. Świetny wynik :-)");
                         };
                     }, 1100);
                 };
             };
         };
     });
+
 });
